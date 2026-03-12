@@ -154,21 +154,16 @@ export default function NovidadesPage() {
             <span>Mais Categorias</span>
           </button>
 
-          {/* Links */}
+          {/* Links — decorativos, sem navegação (em breve) */}
           <div className="flex items-center overflow-x-auto" style={{ scrollbarWidth: "none" }}>
             {categories.map((cat) => (
-              <a
+              <span
                 key={cat}
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap border-r transition-colors duration-200"
+                className="px-5 py-4 text-xs font-semibold uppercase tracking-wider whitespace-nowrap border-r cursor-default"
                 style={{ color: "#888", borderColor: "#222" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#888")}
               >
                 {cat}
-              </a>
+              </span>
             ))}
           </div>
         </div>
@@ -180,25 +175,14 @@ export default function NovidadesPage() {
             style={{ top: "100%", backgroundColor: "#111111", border: "1px solid #1a1a1a" }}
           >
             {categories.map((cat) => (
-              <a
+              <span
                 key={cat}
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-3 text-xs uppercase tracking-wider transition-colors duration-200"
-                style={{ color: "#888", borderBottom: "1px solid #1a1a1a" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#00d9a3";
-                  e.currentTarget.style.backgroundColor = "#0d0d0d";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "#888";
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
+                className="flex items-center gap-2 px-5 py-3 text-xs uppercase tracking-wider cursor-default"
+                style={{ color: "#888", borderBottom: "1px solid #1a1a1a", display: "flex" }}
               >
                 <FaChevronRight size={8} style={{ color: "#00d9a3" }} />
                 {cat}
-              </a>
+              </span>
             ))}
           </div>
         )}
@@ -455,41 +439,26 @@ export default function NovidadesPage() {
                 loja!
               </span>
             </h2>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-bold uppercase tracking-wider flex items-center gap-1 transition-colors duration-200"
-              style={{ color: "#00d9a3" }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            <span
+              className="text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-default"
+              style={{ color: "#555" }}
             >
-              Ver todos <FaChevronRight size={10} />
-            </a>
+              Em breve <FaChevronRight size={10} />
+            </span>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {products.map((p, i) => (
-              <motion.a
+              <motion.div
                 key={p.name}
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="flex flex-col rounded-sm overflow-hidden group"
+                className="flex flex-col rounded-sm overflow-hidden"
                 style={{
                   backgroundColor: "#111111",
-                  border: "1px solid transparent",
-                  transition: "border-color 0.2s",
+                  border: "1px solid #1a1a1a",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "#1a1a1a")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.borderColor = "transparent")
-                }
               >
                 {/* Imagem placeholder */}
                 <div
@@ -524,20 +493,14 @@ export default function NovidadesPage() {
                   >
                     {p.price}
                   </p>
-                  <button
-                    className="w-full py-2 text-xs font-bold uppercase tracking-wider rounded-sm mt-1 transition-colors duration-200"
-                    style={{ backgroundColor: "#1a1a1a", color: "#00d9a3" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.backgroundColor = "#222")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.backgroundColor = "#1a1a1a")
-                    }
+                  <span
+                    className="w-full py-2 text-xs font-bold uppercase tracking-wider rounded-sm mt-1 text-center cursor-default"
+                    style={{ backgroundColor: "#1a1a1a", color: "#555", display: "block" }}
                   >
-                    Comprar
-                  </button>
+                    Em breve
+                  </span>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -633,14 +596,9 @@ export default function NovidadesPage() {
             <ul className="grid grid-cols-2 gap-2">
               {categories.map((cat) => (
                 <li key={cat}>
-                  <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
-                    className="text-xs flex items-center gap-1 transition-colors duration-200"
-                    style={{ color: "#555" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#00d9a3")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
-                  >
+                  <span className="text-xs flex items-center gap-1 cursor-default" style={{ color: "#555" }}>
                     <FaChevronRight size={8} /> {cat}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>
