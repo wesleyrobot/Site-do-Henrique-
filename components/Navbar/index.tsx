@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Artistas", href: "#artistas" },
   { label: "Portfólio", href: "#portfolio" },
   { label: "Blog", href: "#blog" },
+  { label: "Novidades em breve", href: "#novidades", soon: true },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -66,9 +67,14 @@ export default function Navbar() {
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="nav-link text-sm font-medium tracking-widest uppercase text-muted hover:text-white transition-colors duration-200"
+                  className="nav-link text-sm font-medium tracking-widest uppercase text-muted hover:text-white transition-colors duration-200 relative"
                 >
                   {link.label}
+                  {link.soon && (
+                    <span className="absolute -top-2 -right-3 text-[9px] font-bold uppercase tracking-wide bg-primary text-dark px-1 py-0.5 rounded-sm leading-none">
+                      em breve
+                    </span>
+                  )}
                 </button>
               ))}
             </div>
@@ -112,9 +118,14 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.07 }}
                 onClick={() => handleNavClick(link.href)}
-                className="text-2xl font-semibold uppercase tracking-widest text-white hover:text-primary transition-colors duration-200"
+                className="relative text-2xl font-semibold uppercase tracking-widest text-white hover:text-primary transition-colors duration-200"
               >
                 {link.label}
+                {link.soon && (
+                  <span className="absolute -top-2 -right-4 text-[9px] font-bold uppercase tracking-wide bg-primary text-dark px-1 py-0.5 rounded-sm leading-none">
+                    em breve
+                  </span>
+                )}
               </motion.button>
             ))}
             <motion.button
