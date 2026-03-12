@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Artistas", href: "#artistas" },
   { label: "Portfólio", href: "#portfolio" },
   { label: "Blog", href: "#blog" },
-  { label: "Novidades em breve", href: "#novidades", soon: true },
+  { label: "Novidades em breve", href: "/novidades", soon: true },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -27,6 +27,10 @@ export default function Navbar() {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
+    if (href.startsWith("/")) {
+      window.location.href = href;
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
