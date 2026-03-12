@@ -20,18 +20,30 @@ const categories = [
 ];
 
 const products = [
-  { name: "Charuto Cohiba Especial", price: "R$ 89,90", old: "R$ 109,90", tag: "Oferta", emoji: "🍂", stars: 5 },
-  { name: "Cachimbo Artesanal Briar", price: "R$ 149,90", old: null, tag: "Novo", emoji: "🪵", stars: 5 },
-  { name: "Seda OCB Organic King Size", price: "R$ 8,90", old: null, tag: null, emoji: "📄", stars: 4 },
-  { name: "Cinzeiro Cristal Premium", price: "R$ 45,90", old: "R$ 59,90", tag: "Oferta", emoji: "💎", stars: 4 },
-  { name: "Isqueiro Zippo Classic", price: "R$ 199,90", old: null, tag: "Novo", emoji: "🔥", stars: 5 },
-  { name: "Kit Narguilé Completo", price: "R$ 320,00", old: "R$ 389,00", tag: "Oferta", emoji: "💨", stars: 5 },
-  { name: "Bong Acrílico Grafitado", price: "R$ 79,90", old: null, tag: null, emoji: "🌀", stars: 4 },
-  { name: "Caixa Umidora 25 Charutos", price: "R$ 189,00", old: null, tag: "Destaque", emoji: "📦", stars: 5 },
-  { name: "Rosh Bowl Cerâmica", price: "R$ 34,90", old: "R$ 44,90", tag: "Oferta", emoji: "🏺", stars: 4 },
-  { name: "Seda Smoking Rasta 1¼", price: "R$ 6,90", old: null, tag: null, emoji: "📋", stars: 4 },
-  { name: "Case Organizador Premium", price: "R$ 89,00", old: null, tag: "Novo", emoji: "🎒", stars: 5 },
-  { name: "Prato Zenith Crown", price: "R$ 49,90", old: "R$ 64,90", tag: "Oferta", emoji: "🔘", stars: 4 },
+  { name: "Charuto Cohiba Especial", price: "R$ 89,90", old: "R$ 109,90", tag: "Oferta", stars: 5,
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=80" },
+  { name: "Cachimbo Artesanal Briar", price: "R$ 149,90", old: null, tag: "Novo", stars: 5,
+    img: "https://images.unsplash.com/photo-1516585427167-0b62e1a93434?w=400&h=300&fit=crop&q=80" },
+  { name: "Seda OCB Organic King Size", price: "R$ 8,90", old: null, tag: null, stars: 4,
+    img: "https://images.unsplash.com/photo-1574068468669-71ef3b8a1590?w=400&h=300&fit=crop&q=80" },
+  { name: "Cinzeiro Cristal Premium", price: "R$ 45,90", old: "R$ 59,90", tag: "Oferta", stars: 4,
+    img: "https://images.unsplash.com/photo-1543723870-bab9c82a0027?w=400&h=300&fit=crop&q=80" },
+  { name: "Isqueiro Zippo Classic", price: "R$ 199,90", old: null, tag: "Novo", stars: 5,
+    img: "https://images.unsplash.com/photo-1611244419377-b0a760c19719?w=400&h=300&fit=crop&q=80" },
+  { name: "Kit Narguilé Completo", price: "R$ 320,00", old: "R$ 389,00", tag: "Oferta", stars: 5,
+    img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80" },
+  { name: "Bong Acrílico Grafitado", price: "R$ 79,90", old: null, tag: null, stars: 4,
+    img: "https://images.unsplash.com/photo-1567427014523-b89b5e0e1e5e?w=400&h=300&fit=crop&q=80" },
+  { name: "Caixa Umidora 25 Charutos", price: "R$ 189,00", old: null, tag: "Destaque", stars: 5,
+    img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop&q=80" },
+  { name: "Rosh Bowl Cerâmica", price: "R$ 34,90", old: "R$ 44,90", tag: "Oferta", stars: 4,
+    img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80&sat=-50" },
+  { name: "Seda Smoking Rasta 1¼", price: "R$ 6,90", old: null, tag: null, stars: 4,
+    img: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=400&h=300&fit=crop&q=80" },
+  { name: "Case Organizador Premium", price: "R$ 89,00", old: null, tag: "Novo", stars: 5,
+    img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop&q=80" },
+  { name: "Prato Zenith Crown", price: "R$ 49,90", old: "R$ 64,90", tag: "Oferta", stars: 4,
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=80&hue=200" },
 ];
 
 const destaques = [
@@ -275,17 +287,21 @@ export default function NovidadesPage() {
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#2a2a2a"; e.currentTarget.style.transform = "translateY(-4px)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#1a1a1a"; e.currentTarget.style.transform = "translateY(0)"; }}>
 
-                {/* Imagem / thumb */}
-                <div className="relative flex flex-col items-center justify-center" style={{ backgroundColor: "#161616", height: "170px" }}>
+                {/* Imagem real */}
+                <div className="relative overflow-hidden" style={{ height: "180px", backgroundColor: "#161616" }}>
                   {p.tag && (
                     <span className="absolute top-2 left-2 text-[10px] font-bold uppercase px-2 py-1 rounded-sm z-10"
                       style={{ backgroundColor: p.tag === "Oferta" ? "#ef4444" : p.tag === "Novo" ? "#00d9a3" : "#f59e0b", color: p.tag === "Destaque" ? "#0a0a0a" : "#fff" }}>
                       {p.tag}
                     </span>
                   )}
-                  <span className="text-5xl" style={{ filter: "grayscale(20%)" }}>{p.emoji}</span>
-                  {/* Hover: botão rápido */}
-                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-center pb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.img} alt={p.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    style={{ filter: "brightness(0.85)" }} />
+                  {/* Overlay hover */}
+                  <div className="absolute inset-0 flex items-end justify-center pb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)" }}>
                     <a href={WHATSAPP_BUY(p.name)} target="_blank" rel="noopener noreferrer"
                       className="text-[10px] font-bold uppercase tracking-wider px-4 py-2 rounded-sm"
                       style={{ backgroundColor: "#00d9a3", color: "#0a0a0a" }}>
