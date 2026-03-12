@@ -259,13 +259,10 @@ export default function NovidadesPage() {
                 O melhor da nossa <span style={{ background: "linear-gradient(135deg,#00d9a3,#00b88a)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Loja!</span>
               </h2>
             </div>
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-sm transition-colors duration-200"
-              style={{ border: "1px solid #1a1a1a", color: "#00d9a3" }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#111")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent")}>
-              Ver Catálogo Completo <FaChevronRight size={10} />
-            </a>
+            <span className="hidden md:flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-sm cursor-default"
+              style={{ border: "1px solid #1a1a1a", color: "#555" }}>
+              Em Breve <FaChevronRight size={10} />
+            </span>
           </div>
           <div className="w-12 h-0.5 mb-10" style={{ backgroundColor: "#00d9a3" }} />
 
@@ -333,13 +330,10 @@ export default function NovidadesPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-bold uppercase tracking-wider px-10 py-4 text-sm rounded-sm transition-colors duration-200"
-              style={{ backgroundColor: "#111111", color: "#00d9a3", border: "1px solid #1a1a1a" }}
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#00d9a3"; e.currentTarget.style.color = "#0a0a0a"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#111111"; e.currentTarget.style.color = "#00d9a3"; }}>
-              <FaWhatsapp size={16} /> Ver Catálogo Completo pelo WhatsApp
-            </a>
+            <span className="inline-flex items-center gap-2 font-bold uppercase tracking-wider px-10 py-4 text-sm rounded-sm cursor-default"
+              style={{ backgroundColor: "#111111", color: "#555", border: "1px solid #1a1a1a" }}>
+              🕐 Catálogo Completo em Breve
+            </span>
           </div>
         </div>
       </section>
