@@ -7,8 +7,10 @@ import {
   FaInstagram, FaWhatsapp, FaBars, FaUser,
   FaShoppingCart, FaSearch, FaChevronRight,
   FaTimes, FaStar, FaTag, FaTruck, FaShieldAlt,
-  FaHeadset, FaPlus, FaMinus, FaTrash,
+  FaHeadset, FaPlus, FaMinus, FaTrash, FaFire,
+  FaBox, FaLeaf,
 } from "react-icons/fa";
+import { GiCigar, GiPipe, GiCandleLight, GiChemicalDrop } from "react-icons/gi";
 
 const WHATSAPP_BASE = "https://wa.me/5519991323263?text=";
 const INSTAGRAM = "https://www.instagram.com/rick_tattoo_019?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
@@ -20,34 +22,36 @@ const categories = [
 
 type Product = {
   name: string; price: string; old: string | null;
-  tag: string | null; stars: number; img: string;
+  tag: string | null; stars: number;
+  icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
+  color: string; bg: string; category: string;
 };
 
 const products: Product[] = [
   { name: "Charuto Cohiba Especial", price: "R$ 89,90", old: "R$ 109,90", tag: "Oferta", stars: 5,
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=80" },
+    icon: GiCigar, color: "#c8956c", bg: "linear-gradient(135deg,#1a1208,#2a1e0e)", category: "Charutos" },
   { name: "Cachimbo Artesanal Briar", price: "R$ 149,90", old: null, tag: "Novo", stars: 5,
-    img: "https://images.unsplash.com/photo-1516585427167-0b62e1a93434?w=400&h=300&fit=crop&q=80" },
+    icon: GiPipe, color: "#a0785a", bg: "linear-gradient(135deg,#180f0a,#261810)", category: "Cachimbos" },
   { name: "Seda OCB Organic King Size", price: "R$ 8,90", old: null, tag: null, stars: 4,
-    img: "https://images.unsplash.com/photo-1574068468669-71ef3b8a1590?w=400&h=300&fit=crop&q=80" },
+    icon: FaLeaf, color: "#6db56d", bg: "linear-gradient(135deg,#0d180d,#142214)", category: "Sedas" },
   { name: "Cinzeiro Cristal Premium", price: "R$ 45,90", old: "R$ 59,90", tag: "Oferta", stars: 4,
-    img: "https://images.unsplash.com/photo-1543723870-bab9c82a0027?w=400&h=300&fit=crop&q=80" },
+    icon: GiChemicalDrop, color: "#88ccee", bg: "linear-gradient(135deg,#0a1318,#0f1e26)", category: "Cinzeiros" },
   { name: "Isqueiro Zippo Classic", price: "R$ 199,90", old: null, tag: "Novo", stars: 5,
-    img: "https://images.unsplash.com/photo-1611244419377-b0a760c19719?w=400&h=300&fit=crop&q=80" },
+    icon: FaFire, color: "#f97316", bg: "linear-gradient(135deg,#1a0d05,#281405)", category: "Isqueiros" },
   { name: "Kit Narguilé Completo", price: "R$ 320,00", old: "R$ 389,00", tag: "Oferta", stars: 5,
-    img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80" },
+    icon: GiChemicalDrop, color: "#00d9a3", bg: "linear-gradient(135deg,#051a14,#08261d)", category: "Narguilés" },
   { name: "Bong Acrílico Grafitado", price: "R$ 79,90", old: null, tag: null, stars: 4,
-    img: "https://images.unsplash.com/photo-1567427014523-b89b5e0e1e5e?w=400&h=300&fit=crop&q=80" },
+    icon: GiChemicalDrop, color: "#a78bfa", bg: "linear-gradient(135deg,#110d1a,#1a1226)", category: "Bongs" },
   { name: "Caixa Umidora 25 Charutos", price: "R$ 189,00", old: null, tag: "Destaque", stars: 5,
-    img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop&q=80" },
+    icon: FaBox, color: "#c8956c", bg: "linear-gradient(135deg,#1a1208,#2a1e0e)", category: "Charutos" },
   { name: "Rosh Bowl Cerâmica", price: "R$ 34,90", old: "R$ 44,90", tag: "Oferta", stars: 4,
-    img: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80" },
+    icon: GiChemicalDrop, color: "#fb923c", bg: "linear-gradient(135deg,#1a0e05,#261508)", category: "Narguilés" },
   { name: "Seda Smoking Rasta 1¼", price: "R$ 6,90", old: null, tag: null, stars: 4,
-    img: "https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=400&h=300&fit=crop&q=80" },
+    icon: FaLeaf, color: "#4ade80", bg: "linear-gradient(135deg,#0a180a,#0f2010)", category: "Sedas" },
   { name: "Case Organizador Premium", price: "R$ 89,00", old: null, tag: "Novo", stars: 5,
-    img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop&q=80" },
+    icon: FaBox, color: "#94a3b8", bg: "linear-gradient(135deg,#101418,#181e24)", category: "Acessórios" },
   { name: "Prato Zenith Crown", price: "R$ 49,90", old: "R$ 64,90", tag: "Oferta", stars: 4,
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=80" },
+    icon: GiCandleLight, color: "#fbbf24", bg: "linear-gradient(135deg,#1a1405,#261e08)", category: "Narguilés" },
 ];
 
 const destaques = [
@@ -255,10 +259,10 @@ export default function NovidadesPage() {
                     {cart.map((item) => (
                       <div key={item.name} className="flex gap-3 pb-4" style={{ borderBottom: "1px solid #1a1a1a" }}>
                         {/* Thumb */}
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={item.img} alt={item.name}
-                          className="rounded-sm object-cover flex-shrink-0"
-                          style={{ width: 64, height: 64, filter: "brightness(0.85)" }} />
+                        <div className="rounded-sm flex-shrink-0 flex items-center justify-center"
+                          style={{ width: 64, height: 64, background: item.bg }}>
+                          <item.icon size={28} style={{ color: item.color, opacity: 0.85 }} />
+                        </div>
 
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-semibold leading-snug mb-2" style={{ color: "#ccc" }}>{item.name}</p>
@@ -492,10 +496,10 @@ export default function NovidadesPage() {
                       {p.tag}
                     </span>
                   )}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.img} alt={p.name}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    style={{ filter: "brightness(0.85)" }} />
+                  <div className="w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+                    style={{ background: p.bg }}>
+                    <p.icon size={64} style={{ color: p.color, opacity: 0.85 }} />
+                  </div>
                   <div className="absolute inset-0 flex items-end justify-center pb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                     style={{ background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)" }}>
                     <button onClick={() => addToCart(p)}
